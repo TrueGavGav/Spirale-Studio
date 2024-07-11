@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spirale-Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Spirale-Studio - Home</h1>
+  </header>
+  <main>
+    <div class="container">
+      <h2>Welcome to Spirale-Studio</h2>
+      <p>Select a project to start editing or create a new one.</p>
+      <div id="project-list">
+        <!-- Project list will be dynamically populated by scripts.js -->
+      </div>
+      <div class="home-buttons">
+        <button onclick="newProject()">New Project</button>
+        <button onclick="goToEditor()">Open Editor</button>
+      </div>
+    </div>
+  </main>
+  <script src="scripts.js"></script>
+  <script>
+    // JavaScript code can be included here if needed
+    window.onload = function() {
+      loadProjects(); // Load projects from local storage on page load
+    };
+
+    function goToEditor() {
+      const selectedProject = document.querySelector('input[name="project"]:checked');
+      if (selectedProject) {
+        const projectName = selectedProject.value;
+        window.location.href = `editor.html?project=${encodeURIComponent(projectName)}`;
+      } else {
+        alert('Please select a project.');
+      }
+    }
+  </script>
+</body>
+</html>
